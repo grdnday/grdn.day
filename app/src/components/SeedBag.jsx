@@ -60,10 +60,17 @@ export const SeedBag = ({ followingSpot }) => {
         fetchData().catch(console.error);
     }, [wallet.publicKey]);
 
-    const initalizeGarden = async () => {
-        let initializerTokenAccountA = null;
+    const initalizeGarden = async elem => {
         let vault_account_pda = null;
         let vault_account_bump = null;
+
+        let [x, y] = followingSpot;
+
+        const index = coordsToIndex({
+            x,
+            y,
+            w: NROWCOL + 1,
+        });
 
         // Create your Anchor Provider that rejects when it signs anything.
         const provider = new anchor.Provider(connection, wallet, {
@@ -77,11 +84,12 @@ export const SeedBag = ({ followingSpot }) => {
         const initializerMainAccount = wallet.publicKey;
         const gardenAccount = anchor.web3.Keypair.generate();
 
-        const mintA = new anchor.web3.PublicKey('2UsB4iZNrGmLA7v9Z7ry5E7svTYSmNgQMWwnctxRLv83');
+        const d = { gardenAccount: gardenAccount.publicKey.toBase58() };
 
-        initializerTokenAccountA = new anchor.web3.PublicKey(
-            '3U5VS5dfYX51tCHo46wFwXgW1yYvPMaCvpjsSmKUHRBK'
-        );
+        window.localStorage.setItem('gardenAccount', JSON.stringify(d));
+
+        const mintA = elem.mint.address;
+        const initializerTokenAccountA = elem.pubkey.toBase58();
 
         const [_vault_account_pda, _vault_account_bump] = await PublicKey.findProgramAddress(
             [Buffer.from(anchor.utils.bytes.utf8.encode('token-seed')), mintA.toBuffer()],
@@ -92,7 +100,7 @@ export const SeedBag = ({ followingSpot }) => {
 
         const ins = await program.account.gardenAccount.createInstruction(gardenAccount);
 
-        const tx = await program.transaction.initialize(vault_account_bump, 35, {
+        const tx = await program.transaction.initialize(vault_account_bump, index, {
             accounts: {
                 initializer: wallet.publicKey,
                 vaultAccount: vault_account_pda,
@@ -122,9 +130,15 @@ export const SeedBag = ({ followingSpot }) => {
         let vault_account_pda = null;
         let vault_account_bump = null;
 
-        const gardenAccountPublicKey = new anchor.web3.PublicKey(
-            'HzHGW3D2Fq5r9J65Ca4wpYFH4p1qVDSeKTD2aj7Ni7Qt'
-        );
+        let localGarden = JSON.parse(window.localStorage.getItem('gardenAccount'));
+
+        if (!localGarden) return;
+
+        localGarden = localGarden.gardenAccount;
+
+        const gardenAccountPublicKey = new anchor.web3.PublicKey(localGarden);
+
+        console.log('localGarden', localGarden);
 
         const mintAddress = elem.mint.address.toBase58();
         const tokenAccountAddress = elem.pubkey.toBase58();
@@ -217,7 +231,21 @@ export const SeedBag = ({ followingSpot }) => {
                                                 <div
                                                     className={'item'}
                                                     onClick={async () => {
-                                                        await updateGarden(elem);
+                                                        let localGarden = JSON.parse(
+                                                            window.localStorage.getItem(
+                                                                'gardenAccount'
+                                                            )
+                                                        );
+
+                                                        if (!localGarden) {
+                                                            console.log('initalizeGarden');
+                                                            await initalizeGarden(elem);
+                                                        } else {
+                                                            console.log('updateGarden');
+                                                            await updateGarden(elem);
+                                                        }
+
+                                                        // update app
                                                     }}
                                                     style={{
                                                         backgroundColor: stringToColour(
@@ -250,4 +278,3 @@ export const SeedBag = ({ followingSpot }) => {
         </>
     );
 };
-

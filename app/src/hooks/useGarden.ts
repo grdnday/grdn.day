@@ -5,9 +5,15 @@ import { GARDEN_PROGRAM } from '../constants';
 export function useGarden(initialValue: any) {
     const [garden, setValue] = React.useState(initialValue);
     const fetchGarden = React.useCallback(async (connection, wallet) => {
-        const gardenAccountPublicKey = new anchor.web3.PublicKey(
-            'HzHGW3D2Fq5r9J65Ca4wpYFH4p1qVDSeKTD2aj7Ni7Qt'
-        );
+        let localGarden = JSON.parse(window.localStorage.getItem('gardenAccount'));
+
+        if (!localGarden) return;
+
+        localGarden = localGarden.gardenAccount;
+
+        const gardenAccountPublicKey = new anchor.web3.PublicKey(localGarden);
+
+        console.log('localGarden', localGarden);
 
         // Create your Anchor Provider that rejects when it signs anything.
         const provider = new anchor.Provider(connection, wallet, {
@@ -20,6 +26,7 @@ export function useGarden(initialValue: any) {
 
         let gardenAccount = await program.account.gardenAccount.fetch(gardenAccountPublicKey);
 
+        console.log('gardenAccount', gardenAccount);
         setValue(gardenAccount);
     }, []);
     return [garden, fetchGarden];

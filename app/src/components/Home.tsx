@@ -119,6 +119,7 @@ const Home = (props: HomeProps) => {
     };
 
     const onMint = async () => {
+        let status = false;
         try {
             setIsMinting(true);
             if (wallet && candyMachine?.program) {
@@ -152,7 +153,7 @@ const Home = (props: HomeProps) => {
                     setupState
                 );
 
-                if (!status) {
+                if (!status.err) {
                     setAlertState({
                         open: true,
                         message: 'Congratulations! Mint succeeded!',
