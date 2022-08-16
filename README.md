@@ -4,7 +4,7 @@ Welcome to the grdn.day monorepo.
 
 grdn.day is an open source garden sim game where all of the plants in your garden are NFT's.
 
-The game is currently in beta and was created with ❤️ for the (solana summercamp)[https://solana.com/summercamp] hackathon.
+The game is currently in beta and was created with ❤️ for the [solana summercamp](https://solana.com/summercamp) hackathon.
 
 Developers
 The game's code consists of 3 parts.
@@ -15,14 +15,14 @@ garden - Garden Solana Program
 
 ### Concepts
 
-- 1. plants are NFT's
-- 2. plants are minted as seeds and planted 
-- 3. plants change appearance over time
-- 4. plants can be extended graphically and onchain
-- 5. plants state is based on age and maintenance
-- 6. player can burn `water` to help plants grow
-- 7. players can trade plants and seeds for the most beautiful garden
-- 8. digital things can be living too
+1. plants are NFT's
+2. plants are minted as seeds and planted 
+3. plants change appearance over time
+4. plants can be extended graphically and onchain
+5. plants state is based on age and maintenance
+6. player can burn `water` to help plants grow
+7. players can trade plants and seeds for the most beautiful garden
+8. digital things can be living too
 
 
 ### Hackathon Dev Roadmap
