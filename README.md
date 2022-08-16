@@ -6,11 +6,15 @@ grdn.day is an open source garden sim game where all of the plants in your garde
 
 The game is currently in beta and was created with ❤️ for the [solana summercamp](https://solana.com/summercamp) hackathon.
 
-Developers
-The game's code consists of 3 parts.
 
-app - Web Application
-garden - Garden Solana Program
+
+[![grdn.day - solana summercamp 2022 demo](https://i.vimeocdn.com/video/1489386006-865ecc58f2f744c0a48d6eadbb0b1764eef24bc8b4c7ddaa59bab4ce87b491ea-d_400x600)](https://vimeo.com/740139188)
+
+### Developers
+The game's code consists of 2 parts
+
+[app](./app) - Web Application  
+[garden](./garden) - Garden Solana Program  
 
 
 ### Concepts
