@@ -1,0 +1,271 @@
+html,
+h1,
+h2,
+h3,
+h4,
+div,
+p {
+    font-family: 'Comfortaa', cursive;
+}
+
+.hide {
+    display: none;
+    position: fixed;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    background: linen;
+    width: 250px;
+    transform: translate(-65px, -35px);
+    border-radius: 30px;
+    box-shadow: 0px 17px 20px -10px rgb(0 0 0 / 40%);
+    z-index: 2;
+}
+
+.item:hover + .hide {
+    display: block;
+}
+
+svg {
+    font-family: 'Comfortaa', cursive;
+}
+.wallet-adapter-button-trigger {
+    font-family: 'Comfortaa', cursive !important;
+}
+
+.App {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.mint-btn {
+    color: #fff;
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    margin-top: 30px;
+    height: 48px;
+    justify-content: center;
+}
+
+.bag-btn {
+    background: #5e9e02;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 17px 20px -10px rgba(0, 0, 0, 0.4);
+    transition: all ease-in-out 300ms;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-family: 'Comfortaa', cursive !important;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 24px;
+    border-radius: 4px;
+    position: absolute;
+    left: 20px;
+}
+
+.hover-effect:hover {
+    box-shadow: 0px 37px 40px -15px rgba(0, 0, 0, 0.2);
+    transform: translate(0px, -2px);
+}
+
+.bag-btn:hover {
+    box-shadow: 0px 37px 40px -15px rgba(0, 0, 0, 0.2);
+    transform: translate(0px, -2px);
+}
+
+.wallet-adapter-button:hover {
+    box-shadow: 0px 37px 40px -15px rgba(0, 0, 0, 0.2);
+    transform: translate(0px, -2px);
+}
+.wallet-adapter-button {
+    box-shadow: 0px 17px 20px -10px rgba(0, 0, 0, 0.4);
+    transition: all ease-in-out 300ms;
+}
+
+.intoview {
+    animation: appear 3s ease;
+    opacity: 1;
+}
+
+.outofview {
+    animation: disappear 3s ease;
+    opacity: 0;
+}
+
+.sun {
+    position: absolute;
+    z-index: -1;
+    width: 6em;
+    right: 8em;
+    top: 32em;
+    -webkit-animation: orbit2 0.5s linear forwards; /* Chrome, Safari 5 */
+    -moz-animation: orbit2 0.5s linear forwards; /* Firefox 5-15 */
+    -o-animation: orbit2 0.5s linear forwards; /* Opera 12+ */
+    animation: orbit2 0.5s linear forwards; /* Chrome, Firefox 16+, 
+                                                     IE 10+, Safari 5 */
+}
+
+@-webkit-keyframes orbit2 {
+    from {
+        -webkit-transform: rotate(0deg) translateX(150px) rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(-90deg) translateX(450px) rotate(90deg);
+    }
+}
+
+@-moz-keyframes orbit2 {
+    from {
+        -moz-transform: rotate(0deg) translateX(150px) rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(-90deg) translateX(450px) rotate(90deg);
+    }
+}
+
+@-o-keyframes orbit2 {
+    from {
+        -o-transform: rotate(0deg) translateX(150px) rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(-90deg) translateX(450px) rotate(90deg);
+    }
+}
+
+@keyframes orbit2 {
+    from {
+        transform: rotate(0deg) translateX(450px) rotate(0deg);
+    }
+    to {
+        transform: rotate(-90deg) translateX(450px) rotate(90deg);
+    }
+}
+
+/**/
+
+.Ocean {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    top: 0;
+    z-index: -1111;
+}
+
+.Wave {
+    width: 100vw;
+    animation-name: swell;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    fill: #4fc3f7;
+}
+
+@keyframes swell {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+html {
+    background: linear-gradient(-35deg, #23d5ab, #3d49c6, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.audius {
+    position: absolute;
+}
+
+.wallet-btn {
+    position: absolute;
+    padding-left: 20px;
+}
+
+.wallet-adapter-button-trigger {
+    background-color: #3041e0 !important;
+}
